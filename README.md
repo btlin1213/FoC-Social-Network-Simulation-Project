@@ -58,6 +58,7 @@ Example function calls are:
 
 ```
 ### Part IV: _Network Coverage_
+**a hidden program is written to store the code from Part II and Part III for use in Part IV and Part V**
 Write a function `besties_coverage()` that computes the "coverage" of nodes within a social network that are connected via predefined relationships to a given list of individuals, i.e. the proportion of connected individuals, to the total size of the network (= the number of people in the social network). The function takes three arguments:
 
 - `individuals`, a list of individuals, each in the form of a string ID;
@@ -80,6 +81,45 @@ Example calls to the function are:
 
 ```
 
+### Part V: _Social Network Attribute Prediction_
+**a hidden program is written to store the code from Part II and Part III for use in Part IV and Part V**
+The final question is for bonus marks, and is deliberately quite a bit harder than the four basic questions (and the number of marks on offer is deliberately not commensurate with the amount of effort required — bonus marks aren't meant to be easy to get!). Only attempt this is you have completed the earlier questions, and are up for a challenge!
+
+The context for the bonus question is the prediction of attributes of a user based on the attributes of their social network, and the observation that a user's friends often have very similar interests and background to that user (what is formally called homophily).
+
+Write a function `friendly_prediction()` which takes four arguments:
+
+- `unknown_user`, a string indicating the identity of the user you are to predict attributes for;
+
+- `features`, a set of features you are to predict attributes for;
+
+- `bestie_dict`, a dictionary of sets of the besties for each user in the dataset, following the same format as the earlier questions in the project;
+
+- `feat_dict`, a dictionary containing the known attributes for each user in the training data, across a range of features; note that there is no guarantee that the attribute for a given feature will be known for every training user.
+
+Your function should return a dictionary of features (based on `features`), with a predicted list of values for each.
+
+Your function should make its predictions as follows:
+
+- first, identify the set of besties for the given user, and for each feature of interest, determine the most-commonly attested attribute for that feature among the besties; in the case of a tie, the prediction should be a sorted list of attributes;
+
+- second, for any features where no bestie has an attribute for that feature (meaning no prediction was possible in the first step), repeat the process using the second-besties, once again in the form of a sorted list of attributes;
+
+- in the case that no bestie or second-bestie has that attribute, return an empty list.
+
+Note that all attributes will take the form of strings, with the empty string representing the fact that the user explicitly has no value for that feature (e.g. if the user did not go to university, the value for university would be ''), and the lack of an attribute for a given feature indicating that the attribute is unknown. Note further that even if the attribute for `unknown_user` is available in `feat_dict`, you should predict based on the attributes of besties and second besties.
+
+Example calls to the function are:
+
+```
+>>> friendly_prediction('glenn', {'favourite author', 'university'}, {'kim': {'sandy', 'alex', 'glenn'}, 'sandy': {'kim', 'alex'}, 'alex': {'kim', 'sandy'}, 'glenn': {'kim'}}, {'glenn': {'university': ''}, 'kim': {'favourite author': 'AA Milne'}, 'sandy': {'favourite author': 'JRR Tolkien', "university": "University of Melbourne"}, 'alex': {'favourite author': 'AA Milne', 'university': 'Monash University'}})
+{'university': ['Monash University', 'University of Melbourne'], 'favourite author': ['AA Milne']}
+>>> friendly_prediction('kim', {'university'}, {'kim': {'sandy', 'alex', 'glenn'}, 'sandy': {'kim', 'alex'}, 'alex': {'kim', 'sandy'}, 'glenn': {'kim'}}, {'glenn': {'university': ''}, 'kim': {'favourite author': 'AA Milne'}, 'sandy': {'favourite author': 'JRR Tolkien', "university": "University of Melbourne"}, 'alex': {'favourite author': 'AA Milne', 'university': 'Monash University'}})
+{'university': ['', 'Monash University', 'University of Melbourne']}
+>>> friendly_prediction('kim', {'birthplace'}, {'kim': {'sandy', 'alex', 'glenn'}, 'sandy': {'kim', 'alex'}, 'alex': {'kim', 'sandy'}, 'glenn': {'kim'}}, {'glenn': {'university': ''}, 'kim': {'favourite author': 'AA Milne'}, 'sandy': {'favourite author': 'JRR Tolkien', "university": "University of Melbourne"}, 'alex': {'favourite author': 'AA Milne', 'university': 'Monash University'}})
+{'birthplace': []}
+
+```
 Project Credit: [Tim Baldwin](https://people.eng.unimelb.edu.au/tbaldwin/#top) - 2019 Semester 1 for Foundation of Computing
 
 **all code in this repo, unless specified as example, are by Betty Lin** 
