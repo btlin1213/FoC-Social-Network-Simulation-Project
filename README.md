@@ -82,7 +82,8 @@ Example calls to the function are:
 ```
 
 ### Part V: _Social Network Attribute Prediction_
-**a hidden program is written to store the code from Part II and Part III for use in Part IV and Part V**
+**a hidden program is written to store the code from Part II and Part III for use in Part IV and Part V** 
+
 The final question is for bonus marks, and is deliberately quite a bit harder than the four basic questions (and the number of marks on offer is deliberately not commensurate with the amount of effort required — bonus marks aren't meant to be easy to get!). Only attempt this is you have completed the earlier questions, and are up for a challenge!
 
 The context for the bonus question is the prediction of attributes of a user based on the attributes of their social network, and the observation that a user's friends often have very similar interests and background to that user (what is formally called homophily).
