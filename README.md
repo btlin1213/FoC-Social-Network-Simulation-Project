@@ -59,6 +59,7 @@ Example function calls are:
 ```
 ### Part IV: _Network Coverage_
 **a hidden program is written to store the code from Part II and Part III for use in Part IV and Part V**
+
 Write a function `besties_coverage()` that computes the "coverage" of nodes within a social network that are connected via predefined relationships to a given list of individuals, i.e. the proportion of connected individuals, to the total size of the network (= the number of people in the social network). The function takes three arguments:
 
 - `individuals`, a list of individuals, each in the form of a string ID;
